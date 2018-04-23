@@ -1,9 +1,9 @@
 class Api::V1::CardsController < ApplicationController
 
-  # def index
-  #   render json: {'lol': '1'}
-  # end
-  #
+  def index
+    render json: Card.all
+  end
+
 
   def create
     @card = Card.new(cards_params)

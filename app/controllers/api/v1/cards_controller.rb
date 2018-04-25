@@ -4,7 +4,6 @@ class Api::V1::CardsController < ApplicationController
     render json: Card.all
   end
 
-
   def create
     @card = Card.new(cards_params)
     @deck = Deck.find(deck_id_param)

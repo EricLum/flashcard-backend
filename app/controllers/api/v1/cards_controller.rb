@@ -6,7 +6,7 @@ class Api::V1::CardsController < ApplicationController
 
   def create
     @card = Card.new(cards_params)
-    @deck = Deck.find(deck_id_param)
+    @deck = Deck.find(params[:deck][:id])
     @deck.cards << @card
     if @card.save
       render json: @card
@@ -27,10 +27,5 @@ class Api::V1::CardsController < ApplicationController
   private
   def cards_params
     params.require(:card).permit(:question, :answer, :title)
-  end
-
-  def deck_id_param
-    #need to figure out how to isolate certain params
-    params['card']['deckId']
   end
 end
